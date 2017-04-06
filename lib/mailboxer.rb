@@ -22,6 +22,8 @@ module Mailboxer
   mattr_accessor :notification_mailer
   mattr_accessor :message_mailer
   mattr_accessor :custom_deliver_proc
+  @@encryption_key = nil
+  mattr_accessor :encryption_key
 
   class << self
     def setup

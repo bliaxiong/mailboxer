@@ -2,6 +2,7 @@ class Mailboxer::Notification < ActiveRecord::Base
   self.table_name = :mailboxer_notifications
 
   attr_accessor :recipients
+  attr_encrypted :body, :subject, key: Mailboxer.encryption_key
   attr_accessible :body, :subject, :global, :expires if Mailboxer.protected_attributes?
 
   belongs_to :sender, :polymorphic => :true, :required => false
