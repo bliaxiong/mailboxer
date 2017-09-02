@@ -104,6 +104,24 @@ Mailboxer.setup do |config|
 end
 ```
 
+If you have subclassed the Mailboxer::Notification class, you can specify the mailers using a member method:
+
+```ruby
+class NewDocumentNotification < Mailboxer::Notification
+  def mailer_class
+    NewDocumentNotificationMailer
+  end
+end
+
+class NewCommentNotification < Mailboxer::Notification
+  def mailer_class
+    NewDocumentNotificationMailer
+  end
+end
+```
+
+Otherwise, the mailer class will be determined by appending 'Mailer' to the mailable class name.
+
 ### User identities
 
 Users must have an identity defined by a `name` and an `email`. We must ensure that Messageable models have some specific methods. These methods are:
@@ -135,6 +153,7 @@ Mailboxer.setup do |config|
   #Configures the methods needed by mailboxer
   config.email_method = :mailboxer_email
   config.name_method = :name
+  config.notify_method = :notify
   # ...
 end
 ```
@@ -144,9 +163,10 @@ You may change whatever you want or need. For example:
 ```ruby
 config.email_method = :notification_email
 config.name_method = :display_name
+config.notify_method = :notify_mailboxer
 ```
 
-Will use the method `notification_email(object)` instead of `mailboxer_email(object)` and `display_name` for `name`.
+Will use the method `notification_email(object)` instead of `mailboxer_email(object)`, `display_name` for `name` and `notify_mailboxer` for `notify`.
 
 Using default or custom method names, if your model doesn't implement them, Mailboxer will use dummy methods so as to notify you of missing methods rather than crashing.
 

@@ -9,11 +9,12 @@ Mailboxer.setup do |config|
   #Configures the methods needed by mailboxer
   config.email_method = :mailboxer_email
   config.name_method = :name
+  config.notify_method = :notify
 
   config.encryption_key = 'This is a key that is 256 bits!!'
 
   #Configures if you use or not a search engine and which one you are using
-  #Supported engines: [:solr,:sphinx]
+  #Supported engines: [:solr,:sphinx,:pg_search]
   config.search_enabled = false
   config.search_engine = :solr
 
