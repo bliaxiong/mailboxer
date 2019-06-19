@@ -22,7 +22,7 @@ an [issue](https://github.com/ging/mailboxer/issues) to ask for it. It will be g
 will know what you may find useful in the gem.
 
 Mailboxer was born from the great, but outdated, code from [lpsergi /
-acts*as*messageable](https://github.com/psergi/acts_as_messageable).
+acts_as_messageable](https://github.com/psergi/acts_as_messageable).
 
 We are now working to make exhaustive documentation and some wiki
 pages in order to make it even easier to use the gem to its full potential.
@@ -264,6 +264,9 @@ conversation.mark_as_deleted participant
   #* A Message
   #* An array with any of them
 alfa.mark_as_deleted conversation
+
+# get available message for specific user
+conversation.messages_for(alfa)
 ```
 ### How can I retrieve my conversations?
 
@@ -309,7 +312,6 @@ Thanks to [Roman Kushnir (@RKushnir)](https://github.com/RKushnir/) you can test
 
 If you need a GUI you should take a look at these links:
 
-* The [rails-messaging](https://github.com/frodefi/rails-messaging) project.
 * The wiki page [GUI Example on a real application](https://github.com/ging/mailboxer/wiki/GUI-Example-on-a-real-application).
 
 ## Contributors
